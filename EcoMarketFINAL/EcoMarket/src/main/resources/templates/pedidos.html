@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Gestión de Pedidos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="container py-5">
+
+<h1 class="mb-4">📦 Pedidos</h1>
+
+<a href="/pedidos/nuevo" class="btn btn-success mb-3">➕ Nuevo Pedido</a>
+
+<table class="table table-hover table-bordered">
+    <thead class="table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Productos</th>
+        <th>Estado</th>
+        <th>Dirección de Envío</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pedido : ${pedidos}">
+        <td th:text="${pedido.id}">ID</td>
+
+        <!-- Mostrar nombre y apellido del usuario, o un texto si es null -->
+        <td th:if="${pedido.user != null}" th:text="|${pedido.user.nombre} ${pedido.user.apellido}|">Nombre Apellido</td>
+        <td th:if="${pedido.user == null}">Usuario no asignado</td>
+
+        <!-- Mostrar lista de productos, o mensaje si no hay -->
+        <td>
+            <ul th:if="${pedido.products != null and !#lists.isEmpty(pedido.products)}">
+                <li th:each="prod : ${pedido.products}" th:text="${prod.nombre}">Producto</li>
+            </ul>
+            <span th:if="${pedido.products == null or #lists.isEmpty(pedido.products)}">Sin productos</span>
+        </td>
+
+        <td th:text="${pedido.estado}">Estado</td>
+        <td th:text="${pedido.direccionEnvio}">Dirección</td>
+
+        <td>
+            <a th:href="@{/pedidos/editar/{id}(id=${pedido.id})}" class="btn btn-sm btn-warning">✏️ Editar</a>
+            <a th:href="@{/pedidos/eliminar/{id}(id=${pedido.id})}" class="btn btn-sm btn-danger"
+               onclick="return confirm('¿Seguro que deseas eliminar este pedido?')">🗑️ Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

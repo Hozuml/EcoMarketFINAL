@@ -1,0 +1,94 @@
+/* Reset de márgenes y padding global */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;  /* Color de fondo del header */
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+/* Estilo de los enlaces de navegación */
+header nav a {
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo de la sección principal */
+main {
+    padding: 20px;
+}
+
+/* Estilo de la lista de productos */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  /* Hacemos que los productos se adapten a la pantalla */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Estilo para cada tarjeta de producto */
+.product-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Estilo de la imagen del producto */
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Título de cada producto */
+.product-card h3 {
+    color: #4CAF50;
+}
+
+/* Estilo del botón de añadir al carrito */
+.product-card button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Hover del botón */
+.product-card button:hover {
+    background-color: #45a049;
+}
+
+/* Estilo del footer */
+footer {
+    background-color: #2f6a47;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}

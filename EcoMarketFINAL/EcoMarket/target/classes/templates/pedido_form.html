@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Pedido</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="container py-5">
+
+<h1 class="mb-4">📝 Nuevo Pedido</h1>
+
+<form th:action="@{/pedidos}" th:object="${order}" method="post" class="row g-3">
+
+    <!-- Usuario -->
+    <div class="col-md-6">
+        <label class="form-label">Usuario</label>
+        <select class="form-select" th:field="*{user}" required>
+            <option value="" disabled selected>Seleccione un usuario</option>
+            <option th:each="usuario : ${usuarios}"
+                    th:value="${usuario.id}"
+                    th:text="${usuario.nombre}">
+            </option>
+        </select>
+    </div>
+
+    <!-- Estado -->
+    <div class="col-md-6">
+        <label class="form-label">Estado</label>
+        <input type="text" class="form-control" th:field="*{estado}" placeholder="Ej: Pendiente, Enviado..." required />
+    </div>
+
+    <!-- Productos -->
+    <div class="col-md-12">
+        <label class="form-label">Productos</label>
+        <select class="form-select" th:field="*{products}" multiple required>
+            <option th:each="producto : ${productos}"
+                    th:value="${producto.id}"
+                    th:text="${producto.nombre}">
+            </option>
+        </select>
+        <small class="text-muted">Mantén presionado Ctrl (Windows) o Cmd (Mac) para seleccionar varios productos.</small>
+    </div>
+
+    <!-- Dirección de envío -->
+    <div class="col-md-12">
+        <label class="form-label">Dirección de Envío</label>
+        <input type="text" class="form-control" th:field="*{direccionEnvio}" required />
+    </div>
+
+    <!-- Botones -->
+    <div class="col-12 d-flex justify-content-between mt-4">
+        <a th:href="@{/pedidos}" class="btn btn-secondary">⬅️ Volver</a>
+        <button type="submit" class="btn btn-primary">💾 Guardar Pedido</button>
+    </div>
+
+</form>
+
+</body>
+</html>

@@ -1,8 +1,10 @@
 # EcoMarketFINAL
 Descripción del Proyecto
+
 EcoMarket es una aplicación de comercio electrónico construida con Spring Boot y Java. Permite gestionar productos, realizar pedidos y manejar usuarios a través de una interfaz web.
 
 Estructura del Proyecto
+
 El proyecto está organizado en las siguientes carpetas y archivos principales:
 
 src/main/java/cl/duoc/caasoto/ecomarket: Contiene el código fuente de la aplicación.
